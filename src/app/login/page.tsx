@@ -1,21 +1,25 @@
-// src/app/login/page.tsx
 "use client";
 
 export default function LoginPage() {
   const googleLogin = () => {
-    // full redirect to backend - backend will redirect back to /dashboard
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/auth/google/login`;
+    const backend = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+    // REMOVE DOUBLE SLASH
+    const url = backend.replace(/\/+$/, "");
+
+    window.location.href = `${url}/auth/google/login`;
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
       <div className="max-w-md w-full text-center">
         <h1 className="text-3xl font-bold mb-6">Sign in to Quillr</h1>
+
         <button
           onClick={googleLogin}
           className="w-full inline-flex items-center justify-center gap-3 px-4 py-3 rounded-md border hover:bg-gray-50"
         >
-          <img src="google.svg" alt="Google" className="w-5 h-5" />
+          <img src="/google.svg" alt="Google" className="w-5 h-5" />
           <span>Sign in with Google</span>
         </button>
 
