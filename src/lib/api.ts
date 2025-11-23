@@ -1,5 +1,5 @@
 // src/lib/api.ts
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://quillr-backend.onrender.com";
 
 export async function apiGet(path: string) {
   const res = await fetch(`${API_URL}${path}`, {
